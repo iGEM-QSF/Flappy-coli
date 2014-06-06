@@ -1,5 +1,6 @@
 // Initialize Phaser, and creates a 400x490px game
 var game = new Phaser.Game(400, 490, Phaser.AUTO, 'game_div');
+var high_score = 0;
 
 // Creates a new 'main' state that wil contain the game
 var main_state = {
@@ -26,7 +27,9 @@ var main_state = {
 
 		this.score = 0;  
 		var style = { font: "30px Arial", fill: "#ffffff" };  
-		this.label_score = this.game.add.text(20, 20, "0", style);    
+		this.label_score = this.game.add.text(20, 20, "0", style);  
+		this.label_high_score_title = this.game.add.text(300, 20, "HI:", style);   
+		this.label_high_score = this.game.add.text(350, 20, high_score, style); 
 
     	// Call the 'jump' function when the spacekey is hit
     	var space_key = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
@@ -94,9 +97,14 @@ var main_state = {
 
 	hit_pipe: function() {  
     // If the bird has already hit a pipe, we have nothing to do
-    if (this.bird.alive == false)
+    if (this.bird.alive == false){
         return;
+    }
 
+    if (this.score > high_score){
+    	high_score = this.score;
+    	this.label_high_score.content = this.score;  
+    }
     // Set the alive property of the bird to false
     this.bird.alive = false;
 
