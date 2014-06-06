@@ -10,7 +10,7 @@ var play_state = {
         this.pipes.createMultiple(20, 'pipe');  
         this.timer = this.game.time.events.loop(1500, this.add_row_of_pipes, this);           
 
-        this.bird = this.game.add.sprite(100, 245, 'bird');
+        this.bird = this.game.add.sprite(100, 245, 'coli');
         this.bird.body.gravity.y = 1150; 
         this.bird.anchor.setTo(-0.2, 0.5);
 
