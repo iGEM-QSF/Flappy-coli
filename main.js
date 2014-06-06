@@ -17,7 +17,7 @@ var main_state = {
     	this.bird = this.game.add.sprite(100, 245, 'bird');
 
     	// Add gravity to the bird to make it fall
-    	this.bird.body.gravity.y = 1000;  
+    	this.bird.body.gravity.y = 1100;  
 
 		this.pipes = game.add.group();  
 		this.pipes.createMultiple(20, 'pipe');
@@ -38,13 +38,26 @@ var main_state = {
     	if (this.bird.inWorld == false){
         	this.restart_game();
     	}
-    	this.game.physics.overlap(this.bird, this.pipes, this.restart_game, null, this);  
+    	if (this.bird.angle < 20)  
+    	this.bird.angle += 1;
+    	this.game.physics.overlap(this.bird, this.pipes, this.hit_pipe, null, this); 
     },
 
     // Make the bird jump 
 	jump: function() {  
-    // Add a vertical velocity to the bird
-    this.bird.body.velocity.y = -350;
+		if (this.bird.alive == false) {
+    		return; 
+		}
+    	// Add a vertical velocity to the bird
+    	this.bird.body.velocity.y = -350;
+    	// create an animation on the bird
+		var animation = this.game.add.tween(this.bird);
+
+		// Set the animation to change the angle of the sprite to -20° in 100 milliseconds
+		animation.to({angle: -20}, 100);
+
+		// And start the animation
+		animation.start();  
 	},
 
 	// Restart the game
@@ -78,6 +91,23 @@ var main_state = {
         if (i != hole && i != hole +1) 
             this.add_one_pipe(400, i*60+10);   
 	},
+
+	hit_pipe: function() {  
+    // If the bird has already hit a pipe, we have nothing to do
+    if (this.bird.alive == false)
+        return;
+
+    // Set the alive property of the bird to false
+    this.bird.alive = false;
+
+    // Prevent new pipes from appearing
+    this.game.time.events.remove(this.timer);
+
+    // Go through all the pipes, and stop their movement
+    this.pipes.forEachAlive(function(p){
+        p.body.velocity.x = 0;
+    }, this);
+},
 };
 
 // Add and start the 'main' state to start the game
