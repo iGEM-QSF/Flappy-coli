@@ -7,8 +7,8 @@ var play_state = {
         space_key.onDown.add(this.jump, this); 
 
         this.pipes = game.add.group();
+        this.pipes.createMultiple(2, 'logopipe');
         this.pipes.createMultiple(18, 'pipe');
-        this.pipes.createMultiple(2, 'logopipe')
         this.timer = this.game.time.events.loop(1500, this.add_row_of_pipes, this);           
 
         this.bird = this.game.add.sprite(100, 245, 'coli');
