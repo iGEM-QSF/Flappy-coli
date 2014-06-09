@@ -8,11 +8,11 @@ var play_state = {
 
         this.pipes = game.add.group();
         this.pipes.createMultiple(1, 'logopipe');
-        this.pipes.createMultiple(5, 'pipe');
+        this.pipes.createMultiple(4, 'pipe');
+        this.pipes.createMultiple(2, 'logopipe');
+        this.pipes.createMultiple(4, 'pipe');
         this.pipes.createMultiple(1, 'logopipe');
-        this.pipes.createMultiple(5, 'pipe');
-        this.pipes.createMultiple(1, 'logopipe');
-        this.pipes.createMultiple(7, 'pipe');
+        this.pipes.createMultiple(8, 'pipe');
         this.timer = this.game.time.events.loop(1500, this.add_row_of_pipes, this);           
 
         this.bird = this.game.add.sprite(100, 245, 'coli');
