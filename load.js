@@ -5,6 +5,7 @@ var load_state = {
     	// Load the bird sprite
     	this.game.load.image('coli', 'assets/coli.png');
     	this.game.load.image('pipe', 'assets/pipe.png');
+        this.game.load.image('logopipe', 'assets/logopipe.png');
     },
 
     create: function() {
