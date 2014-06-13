@@ -24,12 +24,33 @@ var play_state = {
         var style = { font: "30px Arial", fill: "#ffffff" };
         this.label_score = this.game.add.text(20, 20, "0", style);
         this.label_high_score_title = this.game.add.text(300, 20, "HI:", style);   
-		this.label_high_score = this.game.add.text(350, 20, high_score, style);
+        this.label_high_score = this.game.add.text(350, 20, high_score, style);
 
         this.jump_sound = this.game.add.audio('jump');
+
+
+        canvas = game.add.graphics(0,0);
     },
 
     update: function() {
+        canvas.clear();
+        canvas.lineStyle(2,0x00ff00,1);
+        var headX=this.bird.x;
+        var headY=this.bird.y;
+        nodes[0]={
+            x:headX,
+            y:headY
+        };
+
+        for(i=1;i<tailNodes-1;i++){
+            var nodeAngle = Math.atan2(nodes[i].y-nodes[i-1].y,nodes[i].x-nodes[i-1].x);
+            nodes[i]={
+                x: nodes[i-1].x-0.4+tailLength*Math.cos(nodeAngle),
+                y: nodes[i-1].y+tailLength*Math.sin(nodeAngle) 
+            }
+            canvas.lineTo(nodes[i].x,nodes[i].y);
+        }
+
         if (this.bird.inWorld == false)
             this.restart_game(); 
 
@@ -46,6 +67,7 @@ var play_state = {
         this.bird.body.velocity.y = -350;
         this.game.add.tween(this.bird).to({angle: -20}, 100).start();
         this.jump_sound.play();
+        console.log(this.bird.y);
     },
 
     hit_pipe: function() {
@@ -56,17 +78,17 @@ var play_state = {
         this.game.time.events.remove(this.timer);
 
         if (score > high_score){
-    		high_score = score;
-    		this.label_high_score.content = high_score;  
-    }
+          high_score = score;
+          this.label_high_score.content = high_score;  
+      }
 
-        this.pipes.forEachAlive(function(p){
-            p.body.velocity.x = 0;
-        }, this);
-    },
+      this.pipes.forEachAlive(function(p){
+        p.body.velocity.x = 0;
+    }, this);
+  },
 
-    restart_game: function() {
-        this.game.time.events.remove(this.timer);
+  restart_game: function() {
+    this.game.time.events.remove(this.timer);
 
         // This time we go back to the 'menu' state
         this.game.state.start('menu');

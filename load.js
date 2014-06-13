@@ -6,6 +6,13 @@ var load_state = {
     	this.game.load.image('coli', 'assets/coli.png');
     	this.game.load.image('pipe', 'assets/pipe.png');
         this.game.load.image('logopipe', 'assets/logopipe.png');
+
+        for (i=0; i<tailNodes; i++) {
+                            nodes[i]={
+                             x:0,
+                             y:0
+                        };
+                        };
     },
 
     create: function() {

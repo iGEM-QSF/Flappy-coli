@@ -4,6 +4,9 @@ var game = new Phaser.Game(400, 490, Phaser.AUTO, 'game_div');
 // Our 'score' global variable
 var score = 0;
 var high_score = 0;
+var tailLength=1;
+var tailNodes=150;
+var nodes = Array();
 
 // Define all the states
 game.state.add('load', load_state);  
