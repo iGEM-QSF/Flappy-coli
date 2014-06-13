@@ -5,8 +5,10 @@ var game = new Phaser.Game(400, 490, Phaser.AUTO, 'game_div');
 var score = 0;
 var high_score = 0;
 var tailLength=1;
-var tailNodes=150;
+var tailNodes=130;
+var tailNodes2=70;
 var nodes = Array();
+var nodes2 = Array();
 
 // Define all the states
 game.state.add('load', load_state);  

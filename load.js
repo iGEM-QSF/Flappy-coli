@@ -13,6 +13,12 @@ var load_state = {
                              y:0
                         };
                         };
+        for (i=0; i<tailNodes2; i++) {
+                            nodes2[i]={
+                             x:0,
+                             y:0
+                        };
+                        };
     },
 
     create: function() {

@@ -35,20 +35,40 @@ var play_state = {
     update: function() {
         canvas.clear();
         canvas.lineStyle(2,0x00ff00,1);
-        var headX=this.bird.x;
+        var headX=this.bird.x+7;
         var headY=this.bird.y;
+        var headX2=this.bird.x+7;
+        var headY2=this.bird.y+10;
         nodes[0]={
             x:headX,
             y:headY
         };
+        nodes2[0]={
+            x:headX2,
+            y:headY2
+        };
 
+        var nodeAngle = 0;
+
+        canvas.moveTo(headX,headY);
         for(i=1;i<tailNodes-1;i++){
-            var nodeAngle = Math.atan2(nodes[i].y-nodes[i-1].y,nodes[i].x-nodes[i-1].x);
+            nodeAngle = Math.atan2(nodes[i].y-nodes[i-1].y,nodes[i].x-nodes[i-1].x);
             nodes[i]={
                 x: nodes[i-1].x-0.4+tailLength*Math.cos(nodeAngle),
                 y: nodes[i-1].y+tailLength*Math.sin(nodeAngle) 
             }
             canvas.lineTo(nodes[i].x,nodes[i].y);
+        }
+
+        canvas.moveTo(headX2,headY2);
+
+        for(i=1;i<tailNodes2-1;i++){
+            nodeAngle = Math.atan2(nodes2[i].y-nodes2[i-1].y,nodes2[i].x-nodes2[i-1].x);
+            nodes2[i]={
+                x: nodes2[i-1].x-0.6+tailLength*Math.cos(nodeAngle),
+                y: nodes2[i-1].y+tailLength*Math.sin(nodeAngle) 
+            }
+            canvas.lineTo(nodes2[i].x,nodes2[i].y);
         }
 
         if (this.bird.inWorld == false)
