@@ -1,6 +1,8 @@
 var load_state = {
 	    preload: function() { 
-		this.game.stage.backgroundColor = '#71c5cf';
+		//this.game.stage.backgroundColor = '#71c5cf';
+        this.game.stage.backgroundColor = '#000000';
+
 
     	// Load the bird sprite
     	this.game.load.image('coli', 'assets/coli.png');
