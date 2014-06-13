@@ -37,7 +37,7 @@ var play_state = {
         canvas.lineStyle(2,0xff307f,1);
         var headX=this.bird.x+12;
         var headY=this.bird.y;
-        var headX2=this.bird.x+11;
+        var headX2=this.bird.x+14;
         var headY2=this.bird.y+10;
         nodes[0]={
             x:headX,
