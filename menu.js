@@ -13,10 +13,14 @@ var menu_state = {
         text.anchor.setTo(0.5, 0.5); 
 
         // If the user already played
-        if (high_score > 0) {
+        if (localStorage.getItem("highscore") > 0) {
             // Display its score
-            var score_label = this.game.add.text(x, y+50, "score: " + score, style);
-            var high_score_label = this.game.add.text(x, y+50, "high score: " + high_score, style);
+            if(score > 0){
+                var score_label = this.game.add.text(x, y+50, "score: " + score, style);
+            } else {
+                var score_label = this.game.add.text(x, y+50, "", style);
+            }
+            var high_score_label = this.game.add.text(x, y+50, "high score: " + localStorage.getItem("highscore"), style);
             score_label.anchor.setTo(0.5, 2);
             high_score_label.anchor.setTo(0.5, 0.5);  
         }

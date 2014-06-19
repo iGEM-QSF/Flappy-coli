@@ -24,14 +24,16 @@ var play_state = {
         var style = { font: "30px Arial", fill: "#ffffff" };
         this.label_score = this.game.add.text(20, 20, "0", style);
         this.label_high_score_title = this.game.add.text(300, 20, "HI:", style);   
-		this.label_high_score = this.game.add.text(350, 20, high_score, style);
+		this.label_high_score = this.game.add.text(350, 20, localStorage.getItem("highscore"), style);
 
         this.jump_sound = this.game.add.audio('jump');
     },
 
     update: function() {
-        if (this.bird.inWorld == false)
+        if (this.bird.inWorld == false){
+            this.check_highscore();
             this.restart_game(); 
+        }
 
         if (this.bird.angle < 20)
             this.bird.angle += 1;
@@ -55,14 +57,20 @@ var play_state = {
         this.bird.alive = false;
         this.game.time.events.remove(this.timer);
 
-        if (score > high_score){
-    		high_score = score;
-    		this.label_high_score.content = high_score;  
-    }
+        console.log(localStorage.getItem("highscore"));
+
+        this.check_highscore();
 
         this.pipes.forEachAlive(function(p){
             p.body.velocity.x = 0;
         }, this);
+    },
+
+    check_highscore: function(){
+        if (score > localStorage.getItem("highscore")){
+            localStorage.setItem("highscore", score);
+            this.label_high_score.content = localStorage.getItem("highscore");  
+        }
     },
 
     restart_game: function() {
