@@ -27,9 +27,49 @@ var play_state = {
         this.label_high_score = this.game.add.text(350, 20, localStorage.getItem("highscore"), style);
 
         this.jump_sound = this.game.add.audio('jump');
+
+        canvas = game.add.graphics(0,0);
     },
 
     update: function() {
+        canvas.clear();
+        canvas.lineStyle(2,0xffffff,1);
+        var headX=this.bird.x+15;
+        var headY=this.bird.y+7;
+        var headX2=this.bird.x+15;
+        var headY2=this.bird.y+15;
+        nodes[0]={
+            x:headX,
+            y:headY
+        };
+        nodes2[0]={
+            x:headX2,
+            y:headY2
+        };
+
+        var nodeAngle = 0;
+
+        canvas.moveTo(headX,headY);
+        for(i=1;i<tailNodes-(Math.max(1,(100-score*4)));i++){
+            nodeAngle = Math.atan2(nodes[i].y-nodes[i-1].y,nodes[i].x-nodes[i-1].x);
+            nodes[i]={
+                x: nodes[i-1].x-0.4+tailLength*Math.cos(nodeAngle),
+                y: nodes[i-1].y+tailLength*Math.sin(nodeAngle) 
+            }
+            canvas.lineTo(nodes[i].x,nodes[i].y);
+        }
+
+        if(score > 5){
+            canvas.moveTo(headX2,headY2);
+            for(i=1;i<tailNodes2-(Math.max(1,(70-score*2)));i++){
+                nodeAngle = Math.atan2(nodes2[i].y-nodes2[i-1].y,nodes2[i].x-nodes2[i-1].x);
+                nodes2[i]={
+                    x: nodes2[i-1].x-0.6+tailLength*Math.cos(nodeAngle),
+                    y: nodes2[i-1].y+tailLength*Math.sin(nodeAngle) 
+                }
+                canvas.lineTo(nodes2[i].x,nodes2[i].y);
+            }
+        }
         if (this.bird.inWorld == false){
             this.check_highscore();
             this.restart_game(); 
