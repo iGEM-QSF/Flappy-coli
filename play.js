@@ -29,8 +29,8 @@ var play_state = {
         this.label_high_score_title = this.game.add.text(300, 20, "HI:", style);   
         this.label_high_score = this.game.add.text(350, 20, localStorage.getItem("highscore"), style);
 
-        music = game.add.audio('music',1,true);
-        if(!music.isPlaying){
+        if(music == undefined || !music.isPlaying){
+            music = game.add.audio('music',1,true);
             music.play('',0,1,true);
         } else {
             music.volume = 1;
