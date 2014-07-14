@@ -101,7 +101,7 @@ var play_state = {
         if (this.bird.alive == false)
             return;
 
-        music.volume = 0.5;
+        music.volume = 0.2;
 
         this.bird.alive = false;
         this.game.time.events.remove(this.timer);
