@@ -8,6 +8,7 @@ var tailNodes=130;
 var tailNodes2=70;
 var nodes = Array();
 var nodes2 = Array();
+var music;
 
 // Define all the states
 game.state.add('load', load_state);  
