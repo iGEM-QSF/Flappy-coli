@@ -8,7 +8,7 @@ var load_state = {
     	this.game.load.image('coli', 'assets/coli.png');
     	this.game.load.image('pipe', 'assets/pipe.png');
         this.game.load.image('logopipe', 'assets/logopipe.png');
-        this.game.load.audio('music', 'assets/The Builder.mp3'); 
+        this.game.load.audio('music', 'assets/The_Builder.mp3'); 
 
         for (i=0; i<tailNodes; i++) {
                             nodes[i]={
