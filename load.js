@@ -27,6 +27,5 @@ var load_state = {
     create: function() {
         // When all assets are loaded, go to the 'menu' state
         this.game.state.start('menu');
-        this.music_sound = this.game.add.audio('music');
     }
 };

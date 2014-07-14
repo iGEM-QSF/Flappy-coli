@@ -29,7 +29,8 @@ var play_state = {
         this.label_high_score_title = this.game.add.text(300, 20, "HI:", style);   
         this.label_high_score = this.game.add.text(350, 20, localStorage.getItem("highscore"), style);
 
-        this.jump_sound = this.game.add.audio('jump');
+        this.music_sound = this.game.add.audio('music');
+        this.music_sound.play();
 
         canvas = game.add.graphics(0,0);
     },
