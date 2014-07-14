@@ -29,6 +29,12 @@ var play_state = {
         this.label_high_score_title = this.game.add.text(300, 20, "HI:", style);   
         this.label_high_score = this.game.add.text(350, 20, localStorage.getItem("highscore"), style);
 
+        if(!music.isPlaying){
+            music.play('',0,1,true);
+        } else {
+            music.volume = 1;
+        }
+
         canvas = game.add.graphics(0,0);
     },
 
@@ -94,6 +100,8 @@ var play_state = {
     hit_pipe: function() {
         if (this.bird.alive == false)
             return;
+
+        music.volume = 0.5;
 
         this.bird.alive = false;
         this.game.time.events.remove(this.timer);
