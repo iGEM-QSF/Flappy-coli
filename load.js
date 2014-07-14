@@ -8,6 +8,7 @@ var load_state = {
     	this.game.load.image('coli', 'assets/coli.png');
     	this.game.load.image('pipe', 'assets/pipe.png');
         this.game.load.image('logopipe', 'assets/logopipe.png');
+        this.game.load.audio('music', 'assets/The Builder.mp3'); 
 
         for (i=0; i<tailNodes; i++) {
                             nodes[i]={
@@ -26,5 +27,6 @@ var load_state = {
     create: function() {
         // When all assets are loaded, go to the 'menu' state
         this.game.state.start('menu');
+        this.music_sound = this.game.add.audio('music');
     }
 };
