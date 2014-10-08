@@ -23,18 +23,13 @@ var play_state = {
         this.bird.anchor.setTo(-0.2, 0.5);
 
         // No 'this.score', but just 'score'
-        score = 0; 
+        score = 0;
         var style = { font: "30px Arial", fill: "#ffffff" };
         this.label_score = this.game.add.text(20, 20, "0", style);
         this.label_high_score_title = this.game.add.text(300, 20, "HI:", style);   
         this.label_high_score = this.game.add.text(350, 20, localStorage.getItem("highscore"), style);
 
-        if(music == undefined || !music.isPlaying){
-            music = game.add.audio('music',1,true);
-            music.play('',0,1,true);
-        } else {
-            music.volume = 1;
-        }
+        this.jump_sound = this.game.add.audio('jump');
 
         canvas = game.add.graphics(0,0);
     },
@@ -101,8 +96,6 @@ var play_state = {
     hit_pipe: function() {
         if (this.bird.alive == false)
             return;
-
-        music.volume = 0.35;
 
         this.bird.alive = false;
         this.game.time.events.remove(this.timer);
