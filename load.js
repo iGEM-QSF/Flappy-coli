@@ -3,7 +3,6 @@ var load_state = {
         //this.game.stage.backgroundColor = '#71c5cf';
         game.load.image("background", "assets/background.png");
 
-
         // Load the bird sprite
         this.game.load.image('coli', 'assets/coli.png');
         this.game.load.image('pipe', 'assets/pipe.png');
