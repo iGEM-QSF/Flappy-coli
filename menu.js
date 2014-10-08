@@ -1,6 +1,8 @@
 var menu_state = {  
     create: function() {
         // Call the 'start' function when pressing the spacebar
+        background = game.add.tileSprite(0, 0, 400, 490, "background");    
+
         var space_key = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
         space_key.onDown.add(this.start, this);
         if(this.game.input.pointer1.isDown){
