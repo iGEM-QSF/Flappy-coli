@@ -1,12 +1,12 @@
 var load_state = {
         preload: function() { 
         //this.game.stage.backgroundColor = '#71c5cf';
+        game.load.image("background", "assets/background.png");
 
         // Load the bird sprite
         this.game.load.image('coli', 'assets/coli.png');
         this.game.load.image('pipe', 'assets/pipe.png');
         this.game.load.image('logopipe', 'assets/logopipe.png');
-        game.load.image("background", "assets/background.png");
 
         for (i=0; i<tailNodes; i++) {
                             nodes[i]={
