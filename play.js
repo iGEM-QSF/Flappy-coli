@@ -3,6 +3,7 @@ var play_state = {
     // No more 'preload' function, since it is already done in the 'load' state
 
     create: function() { 
+        background = game.add.tileSprite(0, 0, 512, 512, "background");    
         var space_key = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
         space_key.onDown.add(this.jump, this); 
         if(this.game.input.pointer1.isDown){
@@ -28,8 +29,6 @@ var play_state = {
         this.label_score = this.game.add.text(20, 20, "0", style);
         this.label_high_score_title = this.game.add.text(300, 20, "HI:", style);   
         this.label_high_score = this.game.add.text(350, 20, localStorage.getItem("highscore"), style);
-
-        this.jump_sound = this.game.add.audio('jump');
 
         canvas = game.add.graphics(0,0);
     },
@@ -90,7 +89,6 @@ var play_state = {
 
         this.bird.body.velocity.y = -350;
         this.game.add.tween(this.bird).to({angle: -20}, 100).start();
-        this.jump_sound.play();
     },
 
     hit_pipe: function() {
