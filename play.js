@@ -3,8 +3,12 @@ var play_state = {
     // No more 'preload' function, since it is already done in the 'load' state
 
     create: function() { 
+        background = game.add.tileSprite(0, 0, 400, 490, "background");    
         var space_key = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
         space_key.onDown.add(this.jump, this); 
+        if(this.game.input.pointer1.isDown){
+            this.jump();
+        }
 
         this.pipes = game.add.group();
         this.pipes.createMultiple(1, 'logopipe');
@@ -20,16 +24,54 @@ var play_state = {
         this.bird.anchor.setTo(-0.2, 0.5);
 
         // No 'this.score', but just 'score'
-        score = 0; 
+        score = 0;
         var style = { font: "30px Arial", fill: "#ffffff" };
         this.label_score = this.game.add.text(20, 20, "0", style);
         this.label_high_score_title = this.game.add.text(300, 20, "HI:", style);   
-		this.label_high_score = this.game.add.text(350, 20, localStorage.getItem("highscore"), style);
+        this.label_high_score = this.game.add.text(350, 20, localStorage.getItem("highscore"), style);
 
-        this.jump_sound = this.game.add.audio('jump');
+        canvas = game.add.graphics(0,0);
     },
 
     update: function() {
+        canvas.clear();
+        canvas.lineStyle(2,0xffffff,1);
+        var headX=this.bird.x+15;
+        var headY=this.bird.y+7;
+        var headX2=this.bird.x+15;
+        var headY2=this.bird.y+15;
+        nodes[0]={
+            x:headX,
+            y:headY
+        };
+        nodes2[0]={
+            x:headX2,
+            y:headY2
+        };
+
+        var nodeAngle = 0;
+
+        canvas.moveTo(headX,headY);
+        for(i=1;i<tailNodes-(Math.max(1,(100-score*4)));i++){
+            nodeAngle = Math.atan2(nodes[i].y-nodes[i-1].y,nodes[i].x-nodes[i-1].x);
+            nodes[i]={
+                x: nodes[i-1].x-0.4+tailLength*Math.cos(nodeAngle),
+                y: nodes[i-1].y+tailLength*Math.sin(nodeAngle) 
+            }
+            canvas.lineTo(nodes[i].x,nodes[i].y);
+        }
+
+        if(score > 5){
+            canvas.moveTo(headX2,headY2);
+            for(i=1;i<tailNodes2-(Math.max(1,(70-score*2)));i++){
+                nodeAngle = Math.atan2(nodes2[i].y-nodes2[i-1].y,nodes2[i].x-nodes2[i-1].x);
+                nodes2[i]={
+                    x: nodes2[i-1].x-0.6+tailLength*Math.cos(nodeAngle),
+                    y: nodes2[i-1].y+tailLength*Math.sin(nodeAngle) 
+                }
+                canvas.lineTo(nodes2[i].x,nodes2[i].y);
+            }
+        }
         if (this.bird.inWorld == false){
             this.check_highscore();
             this.restart_game(); 
@@ -47,7 +89,6 @@ var play_state = {
 
         this.bird.body.velocity.y = -350;
         this.game.add.tween(this.bird).to({angle: -20}, 100).start();
-        this.jump_sound.play();
     },
 
     hit_pipe: function() {
@@ -56,8 +97,6 @@ var play_state = {
 
         this.bird.alive = false;
         this.game.time.events.remove(this.timer);
-
-        console.log(localStorage.getItem("highscore"));
 
         this.check_highscore();
 
