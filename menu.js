@@ -6,8 +6,13 @@ var menu_state = {
         var space_key = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
         space_key.onDown.add(this.start, this);
         if(this.game.input.pointer1.isDown){
+            console.log("TÄÄT");
             this.start();
         }
+        game.input.onDown.add(function(e){
+            console.log("TÖÖT");
+            this.start();
+        });
 
         // Defining variables
         var style = { font: "30px Arial", fill: "#ffffff" };

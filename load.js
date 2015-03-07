@@ -24,7 +24,6 @@ var load_state = {
 
     create: function() {
         // When all assets are loaded, go to the 'menu' state
-        this.game.input.addPointer();
         this.game.state.start('menu');
     }
 };
