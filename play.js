@@ -10,9 +10,10 @@ var play_state = {
             console.log("TÄÄT");
             this.jump();
         }
+        var self = this;
         game.input.onDown.add(function(e){
             console.log("TÖÖT");
-            this.jump();
+            self.jump();
         });
 
         this.pipes = game.add.group();

@@ -9,9 +9,10 @@ var menu_state = {
             console.log("TÄÄT");
             this.start();
         }
+        var self = this;
         game.input.onDown.add(function(e){
             console.log("TÖÖT");
-            this.start();
+            self.start();
         });
 
         // Defining variables
