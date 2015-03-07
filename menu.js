@@ -8,6 +8,9 @@ var menu_state = {
         if(this.game.input.pointer1.isDown){
             this.start();
         }
+        game.input.onTap.add(function(e){
+            this.start();
+        });
 
         // Defining variables
         var style = { font: "30px Arial", fill: "#ffffff" };

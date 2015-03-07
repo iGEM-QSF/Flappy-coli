@@ -10,6 +10,10 @@ var play_state = {
             this.jump();
         }
 
+        game.input.onTap.add(function(e){
+            this.jump();
+        });
+
         this.pipes = game.add.group();
         this.pipes.createMultiple(1, 'logopipe');
         this.pipes.createMultiple(4, 'pipe');
