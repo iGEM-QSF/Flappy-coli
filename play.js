@@ -6,13 +6,8 @@ var play_state = {
         background = game.add.tileSprite(0, 0, 400, 490, "background");    
         var space_key = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
         space_key.onDown.add(this.jump, this); 
-        if(this.game.input.pointer1.isDown){
-            console.log("TÄÄT");
-            this.jump();
-        }
         var self = this;
         game.input.onDown.add(function(e){
-            console.log("TÖÖT");
             self.jump();
         });
 
