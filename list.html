@@ -31,6 +31,8 @@
     url: "http://178.62.199.13/highscores/",
     contentType: "application/json",
     success: function(data) {
+      $(".col1").empty();
+      $(".col2").empty();
       for (var i = 0; i < data.length; i++) {
         if(i < data.length / 2){
           if(i < 10){
