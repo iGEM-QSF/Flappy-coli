@@ -13,7 +13,21 @@
 <body>
 <h1>High scores</h1>
 
-<div class="list"></div>
+<div class="container list">
+    <div class="row">
+        <div class="col-md-8">
+        main
+            <div class="row">
+                <div class="col-md-6 col1">
+                    asd1
+                </div>
+                <div class="col-md-6 col2">
+                    asd2
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <script type="text/javascript">
   $.ajax({
     type: "GET",
@@ -40,12 +54,12 @@
     var rank = $('<div/>', {
       class: 'rank col-md-4',
       text: data.ranking
-    });     
+    });
 
     var name = $('<div/>', {
       class: 'playerName col-md-4',
       text: data.player_name
-    }); 
+    });
 
     var score = $('<div/>', {
       class: 'score col-md-4',
