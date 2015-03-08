@@ -18,10 +18,8 @@
         <div class="col-md-8 col-md-offset-2 col-container">
             <div class="row">
                 <div class="col-md-6 col1">
-                    asd1
                 </div>
                 <div class="col-md-6 col2">
-                    asd2
                 </div>
             </div>
         </div>
@@ -36,12 +34,12 @@
       for (var i = 0; i < data.length; i++) {
         if(i < data.length / 2){
           if(i < 10){
-            createHTML(data[i], 1, true);          
+            createHTML(data[i], 1, true);
           } else {
-            createHTML(data[i], 1, false);                      
+            createHTML(data[i], 1, false);
           }
         } else {
-          createHTML(data[i], 2);                    
+          createHTML(data[i], 2);
         }
       };
     },
@@ -55,15 +53,15 @@
     if(top){
       var player = $('<div/>', {
         class: 'player row top'
-      });      
+      });
     } else {
       var player = $('<div/>', {
         class: 'player row'
-      });       
+      });
     }
 
     var name = $('<div/>', {
-      class: 'playerName col-md-4',
+      class: 'playerName col-md-8',
       text: data.ranking + ". " + data.player_name
     });
 
@@ -73,9 +71,9 @@
     });
 
     if(col == 1){
-      $(".col1").append(player);      
+      $(".col1").append(player);
     } else {
-      $(".col2").append(player);            
+      $(".col2").append(player);
     }
     player.append(name);
     player.append(score);

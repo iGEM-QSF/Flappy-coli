@@ -19,3 +19,7 @@ div.col-container {
 div.player {
     font-size: 30px;
 }
+
+.top {
+    font-weight: bold;
+}
