@@ -27,8 +27,9 @@
 </div>
 <script type="text/javascript">
   getData();
-  setTimeout(getData, 5000);
+  setInterval(getData, 5000);
   function getData(){
+        console.log("gertring daraa");
         $.ajax({
         type: "GET",
         url: "http://178.62.199.13/highscores/",
