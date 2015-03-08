@@ -13,9 +13,9 @@
 <body>
 <h1>High scores</h1>
 
-<div class="container list">
+<div class="container-fluid list">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-8 col-md-offset-2 col-container">
             <div class="row">
                 <div class="col-md-6 col1">
                     asd1
@@ -36,9 +36,9 @@
       console.log(data);
       for (var i = 0; i < data.length; i++) {
         if(i < data.length / 2){
-          createHTML(data[i], 1);          
+          createHTML(data[i], 1);
         } else {
-          createHTML(data[i], 2);                    
+          createHTML(data[i], 2);
         }
       };
     },
@@ -70,9 +70,9 @@
     });
 
     if(col == 1){
-      $(".col1").append(player);      
+      $(".col1").append(player);
     } else {
-      $(".col2").append(player);            
+      $(".col2").append(player);
     }
     player.append(rank);
     player.append(name);

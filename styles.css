@@ -11,16 +11,11 @@ h1 {
     color:white;
 }
 
-div.list {
+div.col-container {
     background-color: white;
-    padding: 20px;
     border-radius: 10px;
 }
 
-.col1 {
-    background-color: red;
-}
-
-.col2 {
-    background-color: blue;
+div.player {
+    font-size: 30px;
 }
