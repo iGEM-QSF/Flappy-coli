@@ -106,10 +106,24 @@ var play_state = {
         }, this);
     },
 
-    check_highscore: function(){
+    check_highscore: function(){    
+        if(score > 4){
+            $.ajax({
+              type: "POST",  
+              url: "http://178.62.199.13/highscores",
+              data: JSON.stringify({'score': score, 'player_name': name}),
+              success: function( data ) {
+                console.log("DATA SENT!");
+              },
+              error: function(jqXHR) {
+                console.log("ERROR! DATA NOT SENT");
+              }
+            });  
+        }
+
         if (score > localStorage.getItem("highscore")){
             localStorage.setItem("highscore", score);
-            this.label_high_score.content = localStorage.getItem("highscore");  
+            this.label_high_score.content = localStorage.getItem("highscore");        
         }
     },
 

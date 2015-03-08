@@ -11,19 +11,32 @@
       margin: auto;
       margin-top: 20px;
     }
+
+    .pelaaja, .nimenvaihto {
+      text-align: center;
+    }
   </style>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 
   <script type="text/javascript" src="phaser.min.js"></script>
   <script type="text/javascript" src="load.js"></script>
   <script type="text/javascript" src="menu.js"></script>
   <script type="text/javascript" src="play.js"></script>
   <script type="text/javascript" src="game.js"></script>
+  <script>
+  window.onload=function() {
+    name = prompt("Please enter your name","Heureka");
+    $(".pelaaja").append(name);
+  }
+  </script>
 </head>
 
 <body>
   <br><br>
   <div id="game_div"> </div>
   <br>
+  <h2 class="pelaaja"> Pelaaja: </h2>
+  <div class="nimenvaihto"></div>
   <p>By <a href="http://2014.igem.org/Team:Aalto-Helsinki">Aalto-Helsinki</a><br>
     <a href="http://blog.lessmilk.com/how-to-make-flappy-bird-in-html5-1/">Using a guide by lessmilk.com</a></p> 
 
