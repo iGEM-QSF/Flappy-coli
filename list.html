@@ -26,44 +26,48 @@
     </div>
 </div>
 <script type="text/javascript">
-  $.ajax({
-    type: "GET",
-    url: "http://178.62.199.13/highscores/",
-    contentType: "application/json",
-    success: function(data) {
-      $(".col1").empty();
-      $(".col2").empty();
-      for (var i = 0; i < data.length; i++) {
-        if(i < data.length / 2){
-          if(i < 10){
-            createHTML(data[i], 1, true, i + 1);          
-          } else {
-            createHTML(data[i], 1, false, i + 1);                      
-          }
-        } else {
-          createHTML(data[i], 2, false, i + 1);                    
+  getData();
+  setTimeout(getData, 5000);
+  function getData(){
+        $.ajax({
+        type: "GET",
+        url: "http://178.62.199.13/highscores/",
+        contentType: "application/json",
+        success: function(data) {
+          $(".col1").empty();
+          $(".col2").empty();
+          for (var i = 0; i < data.length; i++) {
+            if(i < data.length / 2){
+              if(i < 10){
+                createHTML(data[i], 1, true, i + 1);
+              } else {
+                createHTML(data[i], 1, false, i + 1);
+              }
+            } else {
+              createHTML(data[i], 2, false, i + 1);
+            }
+          };
+        },
+        error: function(jqXHR) {
+          console.log(jqXHR);
+          console.log("ERROR! DATA NOT RECEIVED");
         }
-      };
-    },
-    error: function(jqXHR) {
-      console.log(jqXHR);
-      console.log("ERROR! DATA NOT RECEIVED");
-    }
-  });
+      });
+  }
 
   function createHTML(data, col, top, rank){
     if(top){
       var player = $('<div/>', {
         class: 'player row top'
-      });      
+      });
     } else {
       var player = $('<div/>', {
         class: 'player row'
-      });       
+      });
     }
 
     var name = $('<div/>', {
-      class: 'playerName col-md-4',
+      class: 'playerName col-md-8',
       text: rank + ". " + data.player_name
     });
 
@@ -73,9 +77,9 @@
     });
 
     if(col == 1){
-      $(".col1").append(player);      
+      $(".col1").append(player);
     } else {
-      $(".col2").append(player);            
+      $(".col2").append(player);
     }
     player.append(name);
     player.append(score);
