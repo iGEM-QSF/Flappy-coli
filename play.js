@@ -107,6 +107,14 @@ var play_state = {
     },
 
     check_highscore: function(){    
+        if (score > localStorage.getItem("highscore")){
+            localStorage.setItem("highscore", score);
+            this.label_high_score.content = localStorage.getItem("highscore");        
+        }
+    },
+
+    restart_game: function() {
+        this.game.time.events.remove(this.timer);
         if(score > 4){
             $.ajax({
               type: "POST",  
@@ -122,15 +130,6 @@ var play_state = {
               }
             });  
         }
-
-        if (score > localStorage.getItem("highscore")){
-            localStorage.setItem("highscore", score);
-            this.label_high_score.content = localStorage.getItem("highscore");        
-        }
-    },
-
-    restart_game: function() {
-        this.game.time.events.remove(this.timer);
 
         // This time we go back to the 'menu' state
         this.game.state.start('menu');
