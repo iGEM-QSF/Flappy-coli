@@ -111,6 +111,7 @@ var play_state = {
             $.ajax({
               type: "POST",  
               url: "http://178.62.199.13:8000/highscores/",
+              contentType: "application/json",
               data: JSON.stringify({'score': score, 'player_name': name}),
               success: function(data) {
                 console.log("Your ranking" + data.ranking);
