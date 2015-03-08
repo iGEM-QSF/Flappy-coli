@@ -116,6 +116,7 @@ var play_state = {
                 console.log("Your ranking" + data.ranking);
               },
               error: function(jqXHR) {
+                console.log(jqXHR);
                 console.log("ERROR! DATA NOT SENT");
               }
             });  
