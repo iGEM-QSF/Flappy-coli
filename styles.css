@@ -23,3 +23,9 @@ div.player {
 .top {
     font-weight: bold;
 }
+
+.corner-img {
+    position: absolute;
+    right:10px;
+    top:10px;
+}
