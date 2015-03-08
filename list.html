@@ -11,6 +11,35 @@
 </head>
 
 <body>
+<h1>High scores</h1>
+
+<div class="list"></div>
+<script type="text/javascript">
+  $.ajax({
+    type: "GET",  
+    url: "http://178.62.199.13/highscores/",
+    contentType: "application/json",
+    success: function(data) {
+      console.log(data);
+      for (var i = data.length - 1; i >= 0; i--) {
+        createHTML(data[i]);
+      };
+    },
+    error: function(jqXHR) {
+      console.log(jqXHR);
+      console.log("ERROR! DATA NOT RECEIVED");
+    }
+  });
+
+  function createHTML(data){
+    console.log(data);
+    var playerName = $('<p/>', {
+      class: 'name',
+      text: data.player_name
+    });
+    $(".list").append(playerName);
+  }
+</script>
 
 </body>
 
