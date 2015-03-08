@@ -36,12 +36,12 @@
       for (var i = 0; i < data.length; i++) {
         if(i < data.length / 2){
           if(i < 10){
-            createHTML(data[i], 1, true);          
+            createHTML(data[i], 1, true, i + 1);          
           } else {
-            createHTML(data[i], 1, false);                      
+            createHTML(data[i], 1, false, i + 1);                      
           }
         } else {
-          createHTML(data[i], 2);                    
+          createHTML(data[i], 2, false, i + 1);                    
         }
       };
     },
@@ -51,7 +51,7 @@
     }
   });
 
-  function createHTML(data, col, top){
+  function createHTML(data, col, top, rank){
     if(top){
       var player = $('<div/>', {
         class: 'player row top'
@@ -64,7 +64,7 @@
 
     var name = $('<div/>', {
       class: 'playerName col-md-4',
-      text: data.ranking + ". " + data.player_name
+      text: rank + ". " + data.player_name
     });
 
     var score = $('<div/>', {
