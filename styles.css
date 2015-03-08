@@ -1,0 +1,17 @@
+html {
+    background-color: rgb(6,99,92);
+}
+
+h1 {
+    text-align: center;
+    color:white;
+}
+
+div.list {
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+}
