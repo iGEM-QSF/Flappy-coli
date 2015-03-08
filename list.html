@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8" />
   <title>Flappy Coli</title>
-
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <link rel="stylesheet" type="text/css" href="styles.css">
   </script>
@@ -21,7 +21,7 @@
     contentType: "application/json",
     success: function(data) {
       console.log(data);
-      for (var i = data.length - 1; i >= 0; i--) {
+      for (var i = 0; i < data.length; i++) {
         createHTML(data[i]);
       };
     },
@@ -33,11 +33,30 @@
 
   function createHTML(data){
     console.log(data);
-    var playerName = $('<p/>', {
-      class: 'name',
-      text: data.player_name
+    var player = $('<div/>', {
+      class: 'player row'
     });
-    $(".list").append(playerName);
+
+    var rank = $('<div/>', {
+      class: 'rank col-md-4',
+      text: data.ranking
+    });     
+
+    var name = $('<div/>', {
+      class: 'playerName col-md-4',
+      text: data.player_name
+    }); 
+
+    var score = $('<div/>', {
+      class: 'score col-md-4',
+      text: data.score
+    });
+
+    $(".list").append(player);
+    player.append(rank);
+    player.append(name);
+    player.append(score);
+
   }
 </script>
 
