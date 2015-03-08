@@ -36,7 +36,11 @@
     success: function(data) {
       console.log(data);
       for (var i = 0; i < data.length; i++) {
-        createHTML(data[i]);
+        if(i < data.length / 2){
+          createHTML(data[i], 1);          
+        } else {
+          createHTML(data[i], 2);                    
+        }
       };
     },
     error: function(jqXHR) {
@@ -45,7 +49,7 @@
     }
   });
 
-  function createHTML(data){
+  function createHTML(data, col){
     console.log(data);
     var player = $('<div/>', {
       class: 'player row'
@@ -66,7 +70,11 @@
       text: data.score
     });
 
-    $(".list").append(player);
+    if(col == 1){
+      $(".col1").append(player);      
+    } else {
+      $(".col2").append(player);            
+    }
     player.append(rank);
     player.append(name);
     player.append(score);
