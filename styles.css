@@ -2,15 +2,19 @@ html {
     background-color: rgb(6,99,92);
 }
 
+body {
+    background-color: transparent;
+}
+
 h1 {
     text-align: center;
     color:white;
 }
 
 div.list {
-    /*background-color: white;
+    background-color: white;
     padding: 20px;
-    border-radius: 10px;*/
+    border-radius: 10px;
 }
 
 .col1 {
